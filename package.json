@@ -2,7 +2,7 @@
   "name": "wizard",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://semlex.github.io/wizard",
+  "homepage": "https://semlex.github.io/wizard/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
