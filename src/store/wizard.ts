@@ -30,8 +30,7 @@ export const useWizardStore = defineStore('wizard', {
     getters: {
         getSteps: (state) => state.steps,
         getCurrentStep: (state) => state.currentStep,
-        getTotalPrice: (state) => state.totalPrice,
-        getStep: (state) => state.steps[0].variants[1].select[0].items[0].title
+        getTotalPrice: (state) => state.totalPrice
     },
     actions: {
         toggleOption(stepNum: number, variantNum: number, optionNum: number) {
@@ -81,18 +80,23 @@ export const useWizardStore = defineStore('wizard', {
             const selectedVariant = step.variants.find(variant => variant.isSelected)
             const variant = step.variants[variantNum]
 
-            if (selectedVariant) {
-                selectedVariant.isSelected = false
-                this.totalPrice -= selectedVariant.price
-            }
+            const isSelectable = variant.select.length === 0 ||
+                variant.select.every(variant => variant.items.some(item => item.isSelected))
 
-            variant.isSelected = true
-            this.totalPrice += variant.price
+            if (isSelectable) {
+                if (selectedVariant) {
+                    selectedVariant.isSelected = false
+                    this.totalPrice -= selectedVariant.price
+                }
 
-            if (!step.isDone)  {
-                step.isDone = true
-                if (this.currentStep !== this.maxSteps - 1) {
-                    this.currentStep += 1
+                variant.isSelected = true
+                this.totalPrice += variant.price
+
+                if (!step.isDone)  {
+                    step.isDone = true
+                    if (this.currentStep !== this.maxSteps - 1) {
+                        this.currentStep += 1
+                    }
                 }
             }
         },
