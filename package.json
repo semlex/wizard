@@ -1,0 +1,25 @@
+{
+  "name": "wizard",
+  "private": true,
+  "version": "0.0.0",
+  "homepage": "https://semlex.github.io/wizard",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^2.0.14",
+    "vue": "^3.2.25",
+    "vue-toastification": "^1.7.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "gh-pages": "^4.0.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9"
+  }
+}
